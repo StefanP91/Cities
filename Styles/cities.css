@@ -1,0 +1,151 @@
+html{
+    height: 100%;
+}
+
+body{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+#videoOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: -1;
+}
+
+#backgroundVideo{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -2;
+}
+
+/* Main */
+
+main{
+    flex-grow: 1;
+}
+
+/* Cards */
+
+.card{
+    position: relative;
+    border-radius: 0.5rem; 
+    color: white !important;
+}
+
+.card:hover{
+    animation: hoverFadeIn 0.7s forwards;
+}
+
+@keyframes hoverFadeIn {
+    from{
+        transform: scale(1) rotateY(0deg);
+    }
+
+    to{
+        transform: scale(1.1) rotateY(360deg);
+    }
+}
+
+
+
+.card::before{
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, #ff6b6b, #f8e71c, #3b5998);
+    z-index: -1;
+    border-radius: inherit;
+}
+
+.card::after{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 1);
+    z-index: -1;
+    border-radius: inherit;
+}
+
+
+/* filters */
+#countryFilter, 
+#timeZoneFilter{
+    position: relative;
+    border-radius: 0.5rem; 
+}
+
+.dropdown-menu{
+    background:  linear-gradient(0deg, rgba(45,56,59,1) 10%, rgba(19,192,183,1) 50%, rgba(0,131,255,1) 90%) !important;
+}
+
+.dropdown-item{
+    color: lightgray !important;
+}
+
+.dropdown-item:hover{
+    background:  linear-gradient(0deg, rgba(45,56,59,1) 10%, rgba(19,192,183,1) 50%, rgba(0,131,255,1) 90%) !important;
+    color: #3b5998 !important;
+    font-weight: bold;
+    transition: 0.5s;
+}
+
+#countryFilter::before,
+#timeZoneFilter::before
+{
+    content: '';
+    position: absolute;
+    top: -1.5px;
+    left: -1.5px;
+    right: -1.5px;
+    bottom: -1.5px;
+    background: linear-gradient(45deg, #ff6b6b, #f8e71c, #3b5998);
+    z-index: -1;
+    border-radius: inherit;
+}
+
+.btn-filter-custom{
+    background:  linear-gradient(0deg, rgba(45,56,59,1) 10%, rgba(19,192,183,1) 50%, rgba(0,131,255,1) 90%) !important;
+}
+
+#searchBar{
+    position: relative;
+    border-radius: 0.5rem; 
+}
+
+#searchBar::before{
+    content: '';
+    position: absolute;
+    top: -1.5px;
+    left: -1.5px;
+    right: -1.5px;
+    bottom: -1.5px;
+    background: linear-gradient(45deg, #ff6b6b, #f8e71c, #3b5998);
+    z-index: -1;
+    border-radius: inherit;
+}
+
+#searchBar input{
+    background:  linear-gradient(0deg, rgba(45,56,59,1) 10%, rgba(19,192,183,1) 50%, rgba(0,131,255,1) 90%) !important;
+}
+
+#searchBar input::placeholder{
+    color: lightgray;
+}
+

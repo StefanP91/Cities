@@ -1,0 +1,11 @@
+@media screen and (max-width: 768px) { 
+    main .hero-text{
+        font-size: 50px;  
+    }
+    
+    footer .carousel-inner {
+        width: 100% !important;
+        margin-left: 0 !important;
+        transform: none !important;
+    }
+}

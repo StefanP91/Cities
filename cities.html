@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cities</title>
+    <link rel="stylesheet" href="Styles/cities.css">
+    <link rel="stylesheet" href="Styles/header.css">
+    <link rel="stylesheet" href="Styles/footer.css">
+    <link rel="stylesheet" href="Styles/fonts.css">
+    <link rel="stylesheet" href="Styles/style-mobile.css">
+    <link rel="icon" type="image/x-icon" href="Images/logo.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+</head>
+<body class="roboto-regular">
+    <div class="video-container">
+        <div id="videoOverlay"></div>
+        <video id="backgroundVideo" autoplay muted loop>
+            <source src="Images/body-bg-2.mp4" type="video/mp4">
+        </video>
+    </div>
+
+    <header>
+        <div class="container">
+            <div class="d-flex justify-content-between align-items-center">
+                <div class="d-flex align-items-center gap-3">
+                    <img src="Images/logo.png" alt="logo" class="logo">
+                    <h1 class="new-amsterdam-regular header-title">Cities</h1>
+                </div>
+                <div class="d-flex align-items-center gap-3">
+                <p id="welcomeMessage" class="matemasie-regular"></p>
+
+                    <div id="buttons">
+                        <button id="logoutBtn" class="btn btn-custom3 mb-2 mb-md-0" onclick="logout()">Logout</button>
+                        <button id="addCityBtn" class="btn btn-custom4" data-bs-target="#AddCityModal" data-bs-toggle="modal">Add City</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container mt-3 mb-3">
+            <div id="filters" class="d-flex flex-column flex-md-row justify-content-between align-items-center mb-5">
+                <div class="dropdown mb-2 mb-md-0" id ="countryFilter">
+                    <button class="btn btn-filter-custom dropdown-toggle" type="button" data-bs-toggle="dropdown">Filter by Country</button>
+                
+                    <ul class="dropdown-menu" id="countryDropdown"></ul>
+                </div>
+
+                <div id="searchBar" class="mb-2 mb-md-0">
+                    <input type="text" class="form-control" id="searchInput" placeholder="Search by Description...">
+                </div>
+
+                <div class="dropdown" id ="timeZoneFilter">
+                    <button class="btn btn-filter-custom dropdown-toggle" type="button" data-bs-toggle="dropdown">Filter by Timezone</button>
+                
+                    <ul class="dropdown-menu" id="timeZoneDropdown"></ul>
+                </div>
+            </div>
+
+            <div id="citiesContainer" class="row g-3"></div>
+
+            <!-- Add City Modal -->
+            <div class="modal fade" id="AddCityModal">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Add City</h5>
+                            <button class="btn-close" data-bs-dismiss="modal"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="mb-3">
+                                <input type="text" class="form-control" id="AddCityImage" placeholder="Add image URL">
+                            </div>
+                            <div class="mb-3">
+                                <input type="text" class="form-control" id="AddCityName" placeholder="City Name">
+                            </div>
+                            <div class="mb-3">
+                                <input type="text" class="form-control" id="AddCityCountry" placeholder="Country">
+                            </div>
+                            <div class="mb-3">
+                                <input type="text" class="form-control" id="AddCityTimeZone" placeholder="Timezone">
+                            </div>
+                            <div class="mb-3">
+                                <input type="text" class="form-control" id="AddCityDescription" placeholder="Description">
+                            </div>
+                            <div class="mb-3">
+                                <input type="text" class="form-control" id="AddCityZipCode" placeholder="Zip Code">
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-custom4" id="addBtn" onclick="addCity()">Add</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- City Modal -->
+            <div class="modal fade" id="cityModal">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="cityModalTitle"></h5>
+                            <button class="btn-close" data-bs-dismiss="modal"></button>
+                        </div>
+                        <div class="modal-body">
+                            <p id="cityModalZipCode"></p>
+                            <p id="cityModalCountry"></p>
+                            <p id="cityModalDescription"></p>
+                        </div>
+
+                        <div class="modal-footer">
+                            <button class="btn btn-custom5" id="modalEditBtn">Edit</button>
+                            <button class="btn btn-custom3" id="modalDeleteBtn">Delete</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container-fluid">
+            <div class="carousel slide slow-carousel" data-bs-ride = "carousel" data-bs-interval="100">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <p>&copy; Copyright 2024 Cities. All rights reserved.</p>
+                    </div>
+                    <div class="carousel-item">
+                        <p>&copy; Copyright 2024 Cities. All rights reserved.</p>
+                    </div>
+                    <div class="carousel-item">
+                        <p>&copy; Copyright 2024 Cities. All rights reserved.</p>
+                    </div>
+
+                    <div class="carousel-item">
+                        <p>&copy; Copyright 2024 Cities. All rights reserved.</p>
+                    </div>
+
+                    <div class="carousel-item">
+                        <p>&copy; Copyright 2024 Cities. All rights reserved.</p>
+                    </div>
+                    <div class="carousel-item">
+                        <p>&copy; Copyright 2024 Cities. All rights reserved.</p>
+                    </div>
+                </div>
+
+            </div>
+            
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+
+</body>
+<script src="Scripts/cities.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</html>
